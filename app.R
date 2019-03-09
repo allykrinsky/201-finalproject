@@ -1,5 +1,6 @@
 library("shiny")
 source("carter.R")
+source("Ally.R")
 
 
 my_ui <- fluidPage(
@@ -20,13 +21,14 @@ my_ui <- fluidPage(
                 )
               ),
               tabPanel(
-                "Test Panel #2",
+                "GDP vs. Dow Jones",
                 sidebarLayout(
                   sidebarPanel(
-                    #Controls here
+                    sliderInput(inputId = "slider", label = "Select Year", 
+                                min = 2014, max = 2018, value = 2016, sep = "")
                   ),
                   mainPanel(
-                    #Visualization here
+                    plotOutput("gdp_dow")
                   )
                 )
               )
@@ -35,6 +37,7 @@ my_ui <- fluidPage(
 
 my_server <- function(input, output){
   output$dow_monthly <- renderPlot({create_monthly_dow_graph(input$ag_type)})
+  output$gdp_dow <- renderPlot({gdp_dow})
 }
 
 
