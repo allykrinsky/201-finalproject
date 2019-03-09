@@ -3,11 +3,34 @@ source("carter.R")
 
 
 my_ui <- fluidPage(
-  radioButtons("ag_type", "Aggregation Type:",
-               list("Average Closing" = 1,
-                 "Maximum Closing" = 2,
-                 "Minimum Closing" = 3), 1),
-  plotOutput("dow_monthly")
+  titlePanel("GDP vs DOW Jones"),
+  tabsetPanel(type = "tabs",
+              tabPanel(
+                "DOW Jones Seasonal",
+                sidebarLayout(
+                  sidebarPanel(
+                    radioButtons("ag_type", "Aggregation Type:",
+                                 list("Average Closing" = 1,
+                                   "Maximum Closing" = 2,
+                                   "Minimum Closing" = 3), 1)
+                  ),
+                  mainPanel(
+                    plotOutput("dow_monthly")
+                  )
+                )
+              ),
+              tabPanel(
+                "Test Panel #2",
+                sidebarLayout(
+                  sidebarPanel(
+                    #Controls here
+                  ),
+                  mainPanel(
+                    #Visualization here
+                  )
+                )
+              )
+  )
 )
 
 my_server <- function(input, output){
