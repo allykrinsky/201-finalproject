@@ -25,7 +25,7 @@ my_ui <- fluidPage(
                 sidebarLayout(
                   sidebarPanel(
                     sliderInput(inputId = "slider", label = "Select Year", 
-                                min = 2014, max = 2018, value = 2016, sep = "")
+                                min = 2014, max = 2018, value = c(2015,2016), sep = "")
                   ),
                   mainPanel(
                     plotOutput("gdp_dow")
@@ -37,7 +37,7 @@ my_ui <- fluidPage(
 
 my_server <- function(input, output){
   output$dow_monthly <- renderPlot({create_monthly_dow_graph(input$ag_type)})
-  output$gdp_dow <- renderPlot({gdp_dow})
+  output$gdp_dow <- renderPlot({gdp_dow_plot(input$slider[1], input$slider[2])})
 }
 
 

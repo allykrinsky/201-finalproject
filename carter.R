@@ -22,4 +22,4 @@ create_monthly_dow_graph <- function(ag_type){
 }
 
 #I don't think is is correct. Is there a better way to do this?
-cor(as.numeric(dow_monthly$month_num), as.numeric(dow_monthly$average_close), use = "everything")
+#cor(as.numeric(dow_monthly$month_num), as.numeric(dow_monthly$average_close), use = "everything")
