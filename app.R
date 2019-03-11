@@ -2,15 +2,17 @@ library("shiny")
 library("zoo")
 library("dplyr")
 library("tidyr")
+library("plotly")
 source("carter.R")
 source("Ally.R")
 source("Claire.R")
 
-my_ui <- fluidPage(
+my_ui <- fluidPage(theme = "bootstrap.css",
   titlePanel("GDP vs DOW Jones"),
   tabsetPanel(type = "tabs",
               tabPanel(
                 "DOW Jones Seasonal",
+                tags$p("Test paragraph info"),
                 sidebarLayout(
                   sidebarPanel(
                     radioButtons("ag_type", "Aggregation Type:",
