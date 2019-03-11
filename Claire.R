@@ -39,7 +39,7 @@ compared_gdp <- function(state, industry){
       panel.background = element_blank(), axis.line = element_line(colour = "black")
     )+
     labs(
-      title = paste("The GDP in United States and",state, "from 2016 to 2018 in", industry),
+      title = paste("The GDP in U.S. and", state, "from 2005 to 2018 \n in",industry),
       x = "year",
       y = "GDP"
     )
