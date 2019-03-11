@@ -18,7 +18,9 @@ create_monthly_dow_graph <- function(ag_type){
     select(month_num, month, year, value = ag_types[[ag_type]])
   
   ggplot(data = dow_monthly) +
-    geom_line(mapping = aes(x = month_num, y = value, group = year, color = year))
+    geom_line(mapping = aes(x = month_num, y = value, group = year, color = year)) +
+    labs(title = "DOW Closing vs Month", x = "Month", y = "GDP Value")+
+    scale_x_discrete(labels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"))
 }
 
 #I don't think is is correct. Is there a better way to do this?
