@@ -5,7 +5,7 @@ source("carter.R")
 source("Ally.R")
 
 
-my_ui <- fluidPage(
+my_ui <- fluidPage(theme = "bootstrap.css",
   titlePanel("GDP vs DOW Jones"),
   tabsetPanel(type = "tabs",
               tabPanel(
