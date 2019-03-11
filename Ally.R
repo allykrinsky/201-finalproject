@@ -67,21 +67,22 @@ for_plot <- for_plot %>%
 
 for_plot <- filter(for_plot, is.na(value) == FALSE) %>% 
   mutate(
-    scale = (as.numeric(year) - 2014) * 12 + as.numeric(month)
+    scales = (as.numeric(year) - 2014) * 12 + as.numeric(month)
   )
 
 gdp_dow_plot <- function(year_1, year_2){
   
   for_plot <- for_plot %>% filter(year >= year_1 & year <= year_2)
-  points <- for_plot$month_year
+
   
-  gdp_dow <- ggplot(data = for_plot ) +
+  gdp_dow <- ggplot(data = for_plot) +
     geom_line(mapping = aes(
-      x = scale,
+      x = scales,
       y = value,
       color = type,
-      group = scale()
+      group = type
     )) + xlab("Date") + ylab("Percent Change") 
+  
   gdp_dow
   
 }
