@@ -8,7 +8,7 @@ gdp <- read.csv("data/gdp.csv", stringsAsFactors = FALSE)
 #View(gdp)
 
 dow <- read.csv("data/DOW.csv", stringsAsFactors = FALSE)
-is.numeric.Date(dow$date)
+#is.numeric.Date(dow$date)
 #View(dow)
 
 gdp_2014_2018 <- gdp %>% 
@@ -68,7 +68,7 @@ for_plot <- for_plot %>%
     dow_change, gdp_change
   ) 
 
-
+#View(for_plot)
 for_plot <- filter(for_plot, is.na(value) == FALSE) 
  
 
@@ -82,15 +82,14 @@ gdp_dow_plot <- function(year_1, year_2){
       y = value,
       color = type,
       group = type
-    )) + xlab("Date") + ylab("Percent Change") 
+    ))  + ylab("Percent Change")  + scale_x_yearmon("%Y-%m") + labs(x = NULL)
   
-  gdp_dow
+  gdp_dow 
   
 }
 
-#gdp_dow_plot(2014, 2017)
 
 
-
+?scale_x_yearmon
 
 
