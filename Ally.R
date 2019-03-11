@@ -1,4 +1,5 @@
 library("dplyr")
+library("tidyr")
 
 gdp <- read.csv("data/gdp.csv", stringsAsFactors = FALSE)
 
@@ -63,20 +64,31 @@ for_plot <- for_plot %>%
     dow_change, gdp_change
   ) 
 
-##user input
+
 for_plot <- filter(for_plot, is.na(value) == FALSE) %>% 
   mutate(
-    scale = (as.numeric(year) - 2014) * 12 + as.numeric(month)
+    scales = (as.numeric(year) - 2014) * 12 + as.numeric(month)
   )
 
-gdp_dow <- ggplot(data = for_plot) +
-  geom_line(mapping = aes(
-    x = scale,
-    y = value,
-    color = type,
-    group = type
-  )) 
+gdp_dow_plot <- function(year_1, year_2){
   
+  for_plot <- for_plot %>% filter(year >= year_1 & year <= year_2)
+
+  
+  gdp_dow <- ggplot(data = for_plot) +
+    geom_line(mapping = aes(
+      x = scales,
+      y = value,
+      color = type,
+      group = type
+    )) + xlab("Date") + ylab("Percent Change") 
+  
+  gdp_dow
+  
+}
+
+#gdp_dow_plot(2014, 2017)
+
 
 
 
