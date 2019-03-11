@@ -7,9 +7,13 @@ library("shiny")
 library("plotly")
 
 gdp <- read.csv("data/gdp.csv",stringsAsFactors = FALSE)
-
 gdp <- select(gdp, -1, -3)
-
+# get the list of region
+get_region_name <- filter(gdp, Description == "All industry total")
+region_list <- get_region_name$GeoName
+# get the list of industry
+get_all_industry <- filter(gdp, GeoName == "Washington")
+industry_list <- trimws(get_all_industry$Description, "left")
 
 compared_gdp <- function(state, industry){
     state_gdp <- filter(gdp, GeoName == state | GeoName == "United States*")
@@ -45,4 +49,4 @@ compared_gdp <- function(state, industry){
   
 }
 
-compared_gdp("Washington",industry <- "Construction")
+#compared_gdp("Washington",industry <- "Construction")
