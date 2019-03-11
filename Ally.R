@@ -72,9 +72,8 @@ for_plot <- filter(for_plot, is.na(value) == FALSE) %>%
 
 gdp_dow_plot <- function(year_1, year_2){
   
-  for_plot <- for_plot %>% filter(year >= year_1 & year <= year_2) %>% 
-    filter(month == "01")
-  label <- paste0(for_plot$month_year, collapse = ", ")
+  for_plot <- for_plot %>% filter(year >= year_1 & year <= year_2) 
+  #label <- paste0(for_plot$month_year, collapse = ", ")
   
   gdp_dow <- ggplot(data = for_plot) +
     geom_line(mapping = aes(
@@ -82,15 +81,15 @@ gdp_dow_plot <- function(year_1, year_2){
       y = value,
       color = type,
       group = type
-    )) + xlab("Date") + ylab("Percent Change") + scale_x_discrete(
+    )) + xlab("Date") + ylab("Percent Change") 
   
   gdp_dow
   
 }
 
-gdp_dow_plot(2014, 2017)
+#gdp_dow_plot(2014, 2017)
 
-for_plot$month_year
+#for_plot$month_year
 
-?labels()
+
 

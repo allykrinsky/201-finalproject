@@ -42,7 +42,11 @@ my_ui <- fluidPage(theme = "bootstrap.css",
                 sidebarLayout(
                   sidebarPanel(
                     selectInput(
-                      inputId = "region", label = "Select Region", selected = "Washington",
+                      inputId = "region1", label = "Select First Region", selected = "Washington",
+                      region_list
+                    ),
+                    selectInput(
+                      inputId = "region2", label = "Select Second Region", selected = "California",
                       region_list
                     ),
                     selectInput(inputId = "industry", label = "Select Indutry", selected = "All industry total", industry_list)
@@ -59,7 +63,7 @@ my_server <- function(input, output){
   output$dow_monthly <- renderPlot({create_monthly_dow_graph(input$ag_type)})
   output$gdp_dow <- renderPlot({gdp_dow_plot(input$slider[1], input$slider[2])})
   output$gdp_graph <- renderPlotly({
-    compared_gdp(input$region, input$industry)
+    compared_gdp(input$region1,input$region2, input$industry)
   })
 }
 
