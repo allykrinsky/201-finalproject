@@ -16,8 +16,8 @@ my_ui <- fluidPage(theme = "bootstrap.css",
                 h1("Background Infomation"),
                 p(intro),
                 h3("Page Descriptions"),
-                p(tab_1) ,
                 p(tab_intro),
+                p(tab_1) ,
                 p(third_tab)
                 
               
@@ -66,10 +66,12 @@ my_ui <- fluidPage(theme = "bootstrap.css",
                       inputId = "region2", label = "Select Second Region", selected = "California",
                       region_list
                     ),
-                    selectInput(inputId = "industry", label = "Select Indutry", selected = "All industry total", industry_list)
+                    selectInput(inputId = "industry", label = "Select Indutry", selected = "All industry total", industry_list),
+                    tableOutput("gdp_table")
                   ),
                   mainPanel(
                     plotlyOutput("gdp_graph")
+                    
                   )# main panel
                 )#sidebar layout
               )# tabPanel
@@ -81,9 +83,8 @@ my_server <- function(input, output){
   output$dow_monthly <- renderPlot({create_monthly_dow_graph(input$ag_type)})
   output$gdp_dow <- renderPlot({gdp_dow_plot(input$slider[1], input$slider[2])})
   #output$gdp_dow_text <- renderText({make_text_gdp_dow})
-  output$gdp_graph <- renderPlotly({
-    compared_gdp(input$region1,input$region2, input$industry)
-  })
+  output$gdp_graph <- renderPlotly({compared_gdp(input$region1,input$region2, input$industry)})
+  output$gdp_table <- renderTable({gdp_table(input$region1,input$region2, input$industry)})
 }
 
 
