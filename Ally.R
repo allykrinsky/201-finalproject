@@ -63,38 +63,61 @@ colnames(for_plot)[6] <- "gdp_change"
 
 for_plot <- for_plot %>% 
   gather(
-    key = type ,
+    key = Type ,
     value = value,
     dow_change, gdp_change
   ) 
 
 #View(for_plot)
 for_plot <- filter(for_plot, is.na(value) == FALSE) 
+
+gdp_dow_table <- function(year_1, year_2){
+  
+  for_table <- for_plot %>% 
+    select(year, Type, value) %>% 
+    filter(year >= year_1 & year <= year_2) %>% 
+    group_by(Type) %>% 
+    summarise(
+      Average = mean(value)
+    )
+  
+  for_table
+}
  
-dates <- c(as.Date(2015-01-01), as.Date(2016-01-01))
 gdp_dow_plot <- function(year_1, year_2){
   
 
-  for_plot <- for_plot %>% filter(year >= year_1 & year <= year_2)  
+  for_plot <- for_plot %>% filter(year >= year_1 & year <= year_2)
 
   
   gdp_dow <- ggplot(data = for_plot) +
     geom_line(mapping = aes(
       x = date,
       y = value,
-      color = type,
-      group = type
+      color = Type,
+      group = Type
 
     ))  + ylab("Percent Change")  +
     scale_x_date(date_breaks = 'year') +
-    xlab("Date") 
+    xlab("Date") + theme(legend.background = element_rect(color = "gray"))
 
   
   gdp_dow 
   
 }
 
-#make_text_gdp_dow <- ""
+make_text_gdp_dow  <- paste("Looking to compare the overall US GDP to the Dow Jones 
+              Index, we plotted a line graph showing the percent change in both overtime. ",
+              "The overall trend for the Dow Jones showed us that there are many highs and 
+              lows each year and that is a common reoccurrence throughout the range of dates.
+              These spikes average out to keep the price increasing by about .25% per year. The 
+              more recent data from 2019 shows that we have just recovered from a large down 
+              period.", "The trend for the United States GDP is a lot less predictable. The reports
+              we plotted came from quarterly reports. The GDP data is has been increasing over
+              this range of dates, but by varying amounts. ", "The overall trend of both lines in the 
+              largest scale from 2014-2019 does seem to follow the same pattern of ups and downs. ",
+              collapse = "<br/>")
+  
 
 
 
