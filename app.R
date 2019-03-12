@@ -13,7 +13,7 @@ my_ui <- fluidPage(theme = "bootstrap.css",
   tabsetPanel(type = "tabs",
               tabPanel(
                 "Introduction",
-                h1("Background Infomation"),
+                h3("Background Infomation"),
                 p(intro),
                 h3("Page Descriptions"),
                 p(tab_intro),

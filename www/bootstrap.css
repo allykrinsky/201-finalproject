@@ -1,6 +1,6 @@
 body {
-  background-color: #b3b3b3;
-  font-family: Arial,Arial,sans-serif;
+  background-image: url(https://s.marketwatch.com/public/resources/images/MW-DU756_Stock_ZH_20150921172954.jpg);
+
 }
 
 img{
@@ -9,6 +9,10 @@ img{
 
 h2{
   color: white;
+  margin-top: 0;
+  padding: 1em 1em;
+  font-size: 48px;
+  font: 'DyeLine';
 }
 
 .nav-tabs {
