@@ -14,25 +14,6 @@ my_ui <- fluidPage(theme = "bootstrap.css",
                 "Introduction",
                 h1("Background Infomation"),
                 p(intro)
-                
-                
-              ),
-              
-              
-              tabPanel(
-                "DOW Jones Seasonal",
-                tags$p("Test paragraph info"),
-                sidebarLayout(
-                  sidebarPanel(
-                    radioButtons("ag_type", "Aggregation Type:",
-                                 list("Average Closing" = 1,
-                                   "Maximum Closing" = 2,
-                                   "Minimum Closing" = 3), 1)
-                  ),
-                  mainPanel(
-                    plotOutput("dow_monthly")
-                  )
-                )
               ),
               tabPanel(
                 "GDP vs. Dow Jones",
@@ -46,6 +27,21 @@ my_ui <- fluidPage(theme = "bootstrap.css",
                     h1("GDP vs. Dow Jones Index"),
                     textOutput(outputId = "gdp_dow_text"),
                     plotOutput("gdp_dow")
+                  )
+                )
+              ),
+              tabPanel(
+                "DOW Jones Seasonal",
+                tags$p("Test paragraph info"),
+                sidebarLayout(
+                  sidebarPanel(
+                    radioButtons("ag_type", "Aggregation Type:",
+                                 list("Average Closing" = 1,
+                                      "Maximum Closing" = 2,
+                                      "Minimum Closing" = 3), 1)
+                  ),
+                  mainPanel(
+                    plotOutput("dow_monthly")
                   )
                 )
               ),

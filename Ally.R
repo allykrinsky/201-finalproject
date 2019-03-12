@@ -63,7 +63,7 @@ colnames(for_plot)[6] <- "gdp_change"
 
 for_plot <- for_plot %>% 
   gather(
-    key = type ,
+    key = Type ,
     value = value,
     dow_change, gdp_change
   ) 
@@ -74,11 +74,11 @@ for_plot <- filter(for_plot, is.na(value) == FALSE)
 gdp_dow_table <- function(year_1, year_2){
   
   for_table <- for_plot %>% 
-    select(year, type, value) %>% 
+    select(year, Type, value) %>% 
     filter(year >= year_1 & year <= year_2) %>% 
-    group_by(type) %>% 
+    group_by(Type) %>% 
     summarise(
-      avg = mean(value)
+      Average = mean(value)
     )
   
   for_table
@@ -94,12 +94,12 @@ gdp_dow_plot <- function(year_1, year_2){
     geom_line(mapping = aes(
       x = date,
       y = value,
-      color = type,
-      group = type
+      color = Type,
+      group = Type
 
     ))  + ylab("Percent Change")  +
     scale_x_date(date_breaks = 'year') +
-    xlab("Date") 
+    xlab("Date") + theme(legend.background = element_rect(color = "gray"))
 
   
   gdp_dow 
