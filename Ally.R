@@ -1,12 +1,14 @@
+#install.packages("zoo")
 library("dplyr")
 library("tidyr")
+library("zoo")
 
 gdp <- read.csv("data/gdp.csv", stringsAsFactors = FALSE)
 
 #View(gdp)
 
 dow <- read.csv("data/DOW.csv", stringsAsFactors = FALSE)
-
+#is.numeric.Date(dow$date)
 #View(dow)
 
 gdp_2014_2018 <- gdp %>% 
@@ -32,7 +34,7 @@ gdp_plot$quarter <- ifelse(gdp_plot$quarter == "Q1", "01",
                     ifelse(gdp_plot$quarter == "Q3", "07",
                     ifelse(gdp_plot$quarter == "Q4", "10", "NA"))))
 
-?switch
+
 dow_plot <- dow %>% 
   select(date, high, low) %>% 
   mutate(
@@ -42,20 +44,22 @@ dow_plot <- dow %>%
   mutate(
     year = substr(date, 1, 4),
     month = substr(date, 6, 7),
-    month_year = paste(month, year)
+    month_year = paste0(year, "-", month)
   ) %>% group_by(month_year) %>% 
   summarise(
     change_monthly = mean(change)
   ) %>% mutate(
-    year = substr(month_year, 4, 7),
-    month = substr(month_year, 1, 2)
+    month = substr(month_year, 6, 7),
+    year = substr(month_year, 1, 4),
+    date = as.Date(as.yearmon(month_year, "%Y-%m"))
   )
+#View(for_plot)
 
 
 for_plot <- left_join(dow_plot, gdp_plot, by = c("month" = "quarter", "year" = "year"))
 
 colnames(for_plot)[2] <- "dow_change"
-colnames(for_plot)[5] <- "gdp_change"
+colnames(for_plot)[6] <- "gdp_change"
 
 for_plot <- for_plot %>% 
   gather(
@@ -64,32 +68,33 @@ for_plot <- for_plot %>%
     dow_change, gdp_change
   ) 
 
-
-for_plot <- filter(for_plot, is.na(value) == FALSE) %>% 
-  mutate(
-    scales = (as.numeric(year) - 2014) * 12 + as.numeric(month)
-  )
-
+#View(for_plot)
+for_plot <- filter(for_plot, is.na(value) == FALSE) 
+ 
+dates <- c(as.Date(2015-01-01), as.Date(2016-01-01))
 gdp_dow_plot <- function(year_1, year_2){
   
-  for_plot <- for_plot %>% filter(year >= year_1 & year <= year_2) 
-  #label <- paste0(for_plot$month_year, collapse = ", ")
+
+  for_plot <- for_plot %>% filter(year >= year_1 & year <= year_2)  
+
   
   gdp_dow <- ggplot(data = for_plot) +
     geom_line(mapping = aes(
-      x = scales,
+      x = date,
       y = value,
       color = type,
       group = type
-    )) + xlab("Date") + ylab("Percent Change") 
+
+    ))  + ylab("Percent Change")  +
+    scale_x_date(date_breaks = 'year') +
+    xlab("Date") 
+
   
-  gdp_dow
+  gdp_dow 
   
 }
 
-#gdp_dow_plot(2014, 2017)
-
-#for_plot$month_year
+#make_text_gdp_dow <- ""
 
 
 
