@@ -50,4 +50,33 @@ compared_gdp <- function(state_one,state_two, industry){
   
 }
 
+
+gdp_table <- function (state_one,state_two, industry){
+# remove the blank space in the begining
+remove_space <- trimws(state_gdp$Description, "left")
+state_gdp$Description = remove_space
+industry_gdp <- filter(state_gdp,Description == industry)
+#View(industry_gdp)
+
+gathered_industry <- gather(industry_gdp, time, GDP, 3:57) %>% 
+  # add a column for the year
+  mutate(year = substr(time, 2,5)) 
+gathered_industry$GDP = as.numeric(gathered_industry$GDP)
+grouped <- gathered_industry %>% 
+  group_by(GeoName,year) %>% 
+  summarise(mean_gdp = mean(GDP))
+
+grouped_diff <- grouped %>% 
+  group_by(GeoName) %>% 
+  arrange(year) %>% 
+  mutate(diff = mean_gdp - lag(mean_gdp), default = first(mean_gdp)) %>% 
+  select(1,2,4)  
+
+avg_change <- grouped_diff %>% 
+  group_by(GeoName) %>% 
+  summarise(avg_change = mean(diff, na.rm = TRUE))
+avg_change
+}
+#table_chart <- gdp_table("Washington", "Minnesota","Construction")
+
 #compared_gdp("Washington",industry <- "Construction")
