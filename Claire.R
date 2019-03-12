@@ -53,6 +53,8 @@ compared_gdp <- function(state_one,state_two, industry){
 
 gdp_table <- function (state_one,state_two, industry){
 # remove the blank space in the begining
+state_gdp <- filter(gdp, GeoName == state_one |GeoName == state_two | GeoName == "United States*")
+#View(state_gdp)
 remove_space <- trimws(state_gdp$Description, "left")
 state_gdp$Description = remove_space
 industry_gdp <- filter(state_gdp,Description == industry)
@@ -76,7 +78,9 @@ avg_change <- grouped_diff %>%
   group_by(GeoName) %>% 
   summarise(avg_change = mean(diff, na.rm = TRUE))
 avg_change
+#View(avg_change)
 }
-#table_chart <- gdp_table("Washington", "Minnesota","Construction")
+#gdp_table("Washington", "California","Construction")
 
-#compared_gdp("Washington",industry <- "Construction")
+
+
