@@ -101,6 +101,7 @@ gdp_dow_plot <- function(year_1, year_2){
     scale_x_date(date_breaks = 'year') +
     xlab("Date") + theme(legend.background = element_rect(color = "gray"))
 
+
   
   gdp_dow 
   

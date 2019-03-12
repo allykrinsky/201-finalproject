@@ -26,13 +26,13 @@ my_ui <- fluidPage(theme = "bootstrap.css",
               
               tabPanel(
                 "DOW Jones Seasonal",
-                tags$p("Test paragraph info"),
+                tags$h3("How does time of year affect the value of the DOW Jones?"),
+                tags$p("Just looking at the graph, there doesn't seem to be any visible correlation between time of year and change in DOW. If we test the correlation between the numeric month and percent change in DOW, we get an index of -0.24 which indicates that there is very little correlation between the two factors. However, because this is a measure of linear correlation, it's possible there's a more complex relationship between the two variables that won't be picked up with linear regression."),
                 sidebarLayout(
                   sidebarPanel(
-                    radioButtons("ag_type", "Aggregation Type:",
-                                 list("Average Closing" = 1,
-                                   "Maximum Closing" = 2,
-                                   "Minimum Closing" = 3), 1)
+                    checkboxGroupInput("years", label = h3("Years:"), 
+                                       choices = list("2014", "2015", "2016", "2017", "2018", "2019"),
+                                       selected = c("2014","2015", "2016", "2017", "2018", "2019"))
                   ),
                   mainPanel(
                     plotOutput("dow_monthly")
@@ -68,9 +68,12 @@ my_ui <- fluidPage(theme = "bootstrap.css",
                       region_list
                     ),
                     selectInput(inputId = "industry", label = "Select Indutry", selected = "All industry total", industry_list)
+                    
                   ),
                   mainPanel(
-                    plotlyOutput("gdp_graph")
+                    plotlyOutput("gdp_graph"),
+                    tableOutput("gdp_table")
+                    
                   )# main panel
                 )#sidebar layout
               )# tabPanel
@@ -79,14 +82,19 @@ my_ui <- fluidPage(theme = "bootstrap.css",
 )
 
 my_server <- function(input, output){
-  output$dow_monthly <- renderPlot({create_monthly_dow_graph(input$ag_type)})
+  output$dow_monthly <- renderPlot({create_monthly_dow_graph(input$years)})
   output$gdp_dow <- renderPlot({gdp_dow_plot(input$slider[1], input$slider[2])})
+
+
+  output$gdp_graph <- renderPlotly({compared_gdp(input$region1,input$region2, input$industry)})
+  output$gdp_table <- renderTable({gdp_table(input$region1,input$region2,input$industry)})
+
   output$gdp_dow_table <- renderTable({gdp_dow_table(input$slider[1], input$slider[2])})
   output$gdp_dow_text <- renderText({make_text_gdp_dow})
-  output$gdp_graph <- renderPlotly({
-    compared_gdp(input$region1,input$region2, input$industry)
-  })
-}
+  
+  }
+
+
 
 
 shinyApp(ui = my_ui, server = my_server)
