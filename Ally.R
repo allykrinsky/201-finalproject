@@ -82,7 +82,7 @@ gdp_dow_plot <- function(year_1, year_2){
       y = value,
       color = type,
       group = type
-    )) + xlab("Date") + ylab("Percent Change") + scale_x_discrete(
+    )) + xlab("Date") + ylab("Percent Change") 
   
   gdp_dow
   

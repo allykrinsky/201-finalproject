@@ -11,13 +11,13 @@ my_ui <- fluidPage(theme = "bootstrap.css",
   tabsetPanel(type = "tabs",
               tabPanel(
                 "DOW Jones Seasonal",
-                tags$p("Test paragraph info"),
+                tags$h3("How does time of year affect the value of the DOW Jones?"),
+                tags$p("Question Answer"),
                 sidebarLayout(
                   sidebarPanel(
-                    radioButtons("ag_type", "Aggregation Type:",
-                                 list("Average Closing" = 1,
-                                   "Maximum Closing" = 2,
-                                   "Minimum Closing" = 3), 1)
+                    checkboxGroupInput("years", label = h3("Years:"), 
+                                       choices = list("2014", "2015", "2016", "2017", "2018", "2019"),
+                                       selected = c("2014","2015", "2016", "2017", "2018", "2019"))
                   ),
                   mainPanel(
                     plotOutput("dow_monthly")
@@ -56,7 +56,7 @@ my_ui <- fluidPage(theme = "bootstrap.css",
 )
 
 my_server <- function(input, output){
-  output$dow_monthly <- renderPlot({create_monthly_dow_graph(input$ag_type)})
+  output$dow_monthly <- renderPlot({create_monthly_dow_graph(input$years)})
   output$gdp_dow <- renderPlot({gdp_dow_plot(input$slider[1], input$slider[2])})
   output$gdp_graph <- renderPlotly({
     compared_gdp(input$region, input$industry)
