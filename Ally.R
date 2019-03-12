@@ -89,6 +89,8 @@ gdp_dow_plot <- function(year_1, year_2){
 
   for_plot <- for_plot %>% filter(year >= year_1 & year <= year_2)
 
+  num_years <- year_2 - year_1  
+  x_breaks <- list("0" = 'month', "1" = 'month', "2" = 'year', "3" = 'year', "4" = 'year', "5" = 'year')  
   
   gdp_dow <- ggplot(data = for_plot) +
     geom_line(mapping = aes(
@@ -98,7 +100,7 @@ gdp_dow_plot <- function(year_1, year_2){
       group = Type
 
     ))  + ylab("Percent Change")  +
-    scale_x_date(date_breaks = 'year') +
+    scale_x_date(date_breaks = x_breaks[[num_years]]) +
     xlab("Date") + theme(legend.background = element_rect(color = "gray"))
 
 

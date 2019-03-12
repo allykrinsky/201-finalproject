@@ -49,6 +49,7 @@ my_ui <- fluidPage(theme = "bootstrap.css",
                   ),
                   mainPanel(
                     h1("GDP vs. Dow Jones Index"),
+                    h3("How does change in the Dow Jones Index affect the change in US GDP?"),
                     textOutput(outputId = "gdp_dow_text"),
                     plotOutput("gdp_dow")
                   )
