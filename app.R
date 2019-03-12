@@ -69,12 +69,13 @@ my_ui <- fluidPage(theme = "bootstrap.css",
                       inputId = "region2", label = "Select Second Region", selected = "California",
                       region_list
                     ),
-                    selectInput(inputId = "industry", label = "Select Indutry", selected = "All industry total", industry_list)
+                    selectInput(inputId = "industry", label = "Select Indutry", selected = "All industry total", industry_list),
+                    tableOutput("gdp_table")
                     
                   ),
                   mainPanel(
-                    plotlyOutput("gdp_graph"),
-                    tableOutput("gdp_table")
+                    plotlyOutput("gdp_graph")
+                    
                     
                   )# main panel
                 )#sidebar layout
