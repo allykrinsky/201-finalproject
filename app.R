@@ -8,28 +8,17 @@ source("Ally.R")
 source("Claire.R")
 source("intro_page.R")
 my_ui <- fluidPage(theme = "bootstrap.css",
-  titlePanel("GDP vs DOW Jones"),
+  titlePanel("U.S. Economy Report"),
   tabsetPanel(type = "tabs",
               tabPanel(
                 "Introduction",
                 h1("Background Infomation"),
                 p(intro)
+                
+                
               ),
-              tabPanel(
-                "GDP vs. Dow Jones",
-                sidebarLayout(
-                  sidebarPanel(
-                    sliderInput(inputId = "slider", label = "Select Year", 
-                                min = 2014, max = 2019, value = c(2016, 2018), sep = ""),
-                    tableOutput("gdp_dow_table")
-                  ),
-                  mainPanel(
-                    h1("GDP vs. Dow Jones Index"),
-                    textOutput(outputId = "gdp_dow_text"),
-                    plotOutput("gdp_dow")
-                  )
-                )
-              ),
+              
+              
               tabPanel(
                 "DOW Jones Seasonal",
                 tags$p("Test paragraph info"),
@@ -37,11 +26,25 @@ my_ui <- fluidPage(theme = "bootstrap.css",
                   sidebarPanel(
                     radioButtons("ag_type", "Aggregation Type:",
                                  list("Average Closing" = 1,
-                                      "Maximum Closing" = 2,
-                                      "Minimum Closing" = 3), 1)
+                                   "Maximum Closing" = 2,
+                                   "Minimum Closing" = 3), 1)
                   ),
                   mainPanel(
                     plotOutput("dow_monthly")
+                  )
+                )
+              ),
+              tabPanel(
+                "GDP vs. Dow Jones",
+                sidebarLayout(
+                  sidebarPanel(
+                    sliderInput(inputId = "slider", label = "Select Year", 
+                                min = 2014, max = 2019, value = c(2016, 2018), sep = "")
+                  ),
+                  mainPanel(
+                    h1("GDP vs. Dow Jones Index"),
+                    #textOutput(outputId = "gdp_dow_text"),
+                    plotOutput("gdp_dow")
                   )
                 )
               ),
@@ -72,8 +75,7 @@ my_ui <- fluidPage(theme = "bootstrap.css",
 my_server <- function(input, output){
   output$dow_monthly <- renderPlot({create_monthly_dow_graph(input$ag_type)})
   output$gdp_dow <- renderPlot({gdp_dow_plot(input$slider[1], input$slider[2])})
-  output$gdp_dow_table <- renderTable({gdp_dow_table(input$slider[1], input$slider[2])})
-  output$gdp_dow_text <- renderText({make_text_gdp_dow})
+  #output$gdp_dow_text <- renderText({make_text_gdp_dow})
   output$gdp_graph <- renderPlotly({
     compared_gdp(input$region1,input$region2, input$industry)
   })
