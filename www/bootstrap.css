@@ -1,11 +1,6 @@
 body {
-  background-color: #9B9B9B;
+  background-image: url(https://s.marketwatch.com/public/resources/images/MW-DU756_Stock_ZH_20150921172954.jpg);
 
-}
-
-.container-fluid {
-  padding-right:0px;
-  padding-left:0;
 }
 
 img{
@@ -16,12 +11,9 @@ h2{
   color: white;
   margin-top: 0;
   padding: 1em 1em;
-  background-color: #258;
-  
   font-size: 48px;
   font: 'DyeLine';
 }
-
 
 
 .nav-tabs {
