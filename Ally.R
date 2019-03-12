@@ -68,7 +68,7 @@ for_plot <- for_plot %>%
     dow_change, gdp_change
   ) 
 
-#View(for_plot)
+
 for_plot <- filter(for_plot, is.na(value) == FALSE) 
 
 gdp_dow_table <- function(year_1, year_2){
@@ -106,17 +106,20 @@ gdp_dow_plot <- function(year_1, year_2){
   
 }
 
+
+
 make_text_gdp_dow  <- paste("Looking to compare the overall US GDP to the Dow Jones 
               Index, we plotted a line graph showing the percent change in both overtime. ",
               "The overall trend for the Dow Jones showed us that there are many highs and 
               lows each year and that is a common reoccurrence throughout the range of dates.
-              These spikes average out to keep the price increasing by about .25% per year. The 
+              These spikes average out to keep the price increasing by a small percentage each year. The 
               more recent data from 2019 shows that we have just recovered from a large down 
               period.", "The trend for the United States GDP is a lot less predictable. The reports
               we plotted came from quarterly reports. The GDP data is has been increasing over
-              this range of dates, but by varying amounts. ", "The overall trend of both lines in the 
-              largest scale from 2014-2019 does seem to follow the same pattern of ups and downs. ",
-              collapse = "<br/>")
+              this range of dates by about 1% each year. ", "The overall trend of both lines in the 
+              largest scale from 2014-2019 does seem to follow the same pattern of ups and downs. This correlation can be 
+              usuful for those investing in the market. Although we do observer a similar trend, we can not tell from this 
+              data whether this is a causal relationship or just a correlation.")
   
 
 

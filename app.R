@@ -7,6 +7,7 @@ source("carter.R")
 source("Ally.R")
 source("Claire.R")
 source("intro_page.R")
+
 my_ui <- fluidPage(theme = "bootstrap.css",
   titlePanel("U.S. Economy Report"),
   tabsetPanel(type = "tabs",
@@ -14,11 +15,12 @@ my_ui <- fluidPage(theme = "bootstrap.css",
                 "Introduction",
                 h1("Background Infomation"),
                 p(intro),
-                h1("Tabs Description"),
+                h3("Page Descriptions"),
+                p(tab_1) ,
                 p(tab_intro),
                 p(third_tab)
                 
-                
+              
               ),
               
               
