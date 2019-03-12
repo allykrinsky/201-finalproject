@@ -51,7 +51,7 @@ dow_plot <- dow %>%
   ) %>% mutate(
     month = substr(month_year, 6, 7),
     year = substr(month_year, 1, 4),
-    date = as.yearmon(month_year, "%Y-%m")
+    date = as.Date(as.yearmon(month_year, "%Y-%m"))
   )
 #View(for_plot)
 
@@ -71,7 +71,7 @@ for_plot <- for_plot %>%
 #View(for_plot)
 for_plot <- filter(for_plot, is.na(value) == FALSE) 
  
-
+dates <- c(as.Date(2015-01-01), as.Date(2016-01-01))
 gdp_dow_plot <- function(year_1, year_2){
   
 
@@ -85,13 +85,16 @@ gdp_dow_plot <- function(year_1, year_2){
       color = type,
       group = type
 
-    ))  + ylab("Percent Change")  + scale_x_yearmon("%Y-%m") + labs(x = NULL)
+    ))  + ylab("Percent Change")  +
+    scale_x_date(date_breaks = 'year') +
+    xlab("Date") 
 
   
   gdp_dow 
   
 }
 
+#make_text_gdp_dow <- ""
 
 
 

@@ -30,9 +30,11 @@ my_ui <- fluidPage(theme = "bootstrap.css",
                 sidebarLayout(
                   sidebarPanel(
                     sliderInput(inputId = "slider", label = "Select Year", 
-                                min = 2014, max = 2018, value = c(2015,2016), sep = "")
+                                min = 2014, max = 2019, value = c(2016, 2018), sep = "")
                   ),
                   mainPanel(
+                    h1("GDP vs. Dow Jones Index"),
+                    #textOutput(outputId = "gdp_dow_text"),
                     plotOutput("gdp_dow")
                   )
                 )
@@ -63,6 +65,7 @@ my_ui <- fluidPage(theme = "bootstrap.css",
 my_server <- function(input, output){
   output$dow_monthly <- renderPlot({create_monthly_dow_graph(input$ag_type)})
   output$gdp_dow <- renderPlot({gdp_dow_plot(input$slider[1], input$slider[2])})
+  #output$gdp_dow_text <- renderText({make_text_gdp_dow})
   output$gdp_graph <- renderPlotly({
     compared_gdp(input$region1,input$region2, input$industry)
   })
