@@ -25,7 +25,7 @@ tab_intro <- "Our report has three tabs: Dow Jones Seasonal, GDP VS. Dow Jones, 
 
 
 
-third_tab <- paste("United States GDP Tab will provide help answer the question: How are GDPs in the two regions compared and related to each other?",
+third_tab <- paste("United States GDP Tab will provide help answer the question: Is there any correlation between geographic locations and GDP?",
                    "The question will provide the user  with a better understanding of the US economy by providing the GDP stats in individual states and region. 
                    The user can choose two regions including states and larger areas, and a certain industry. Then the graph will show the U.S. GDP trend and GDP 
                    tend in these two regions from 2005 to 2018 in each quarter in the certain industry. If the user choose to compare two states’ GDP change, the 
@@ -33,7 +33,7 @@ third_tab <- paste("United States GDP Tab will provide help answer the question:
                    to a larger area, the user can see if the state’s GDP influence the GDP change in that larger area. For example, the user can choose Minnesota 
                    and Midwest, and compare how much does Minnesota’s GDP change contribute to the overall GDP change in Midwest. The GDP for the United States is 
                    always shown on the graph because it provides the user with the overview of the country’s GDP change. The table will provide the user a quantitative 
-                   analysis on the GDP changes for these regions. Combining the graph and table, the user can understand US economy from different perspectives.",
+                   analysis on the GDP changes for these regions from 2005 to 2018. Combining the graph and table, the user can understand US economy from different perspectives.",
                    sep = "\n"
 )
                    

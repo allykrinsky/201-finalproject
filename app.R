@@ -58,6 +58,7 @@ my_ui <- fluidPage(theme = "bootstrap.css",
               
               tabPanel(
                 "United States GDP",
+                tags$h3("Is there any correlation between geographic locations and GDP?"),
                 sidebarLayout(
                   sidebarPanel(
                     selectInput(
