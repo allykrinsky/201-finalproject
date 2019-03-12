@@ -15,7 +15,7 @@ region_list <- get_region_name$GeoName
 get_all_industry <- filter(gdp, GeoName == "Washington")
 industry_list <- trimws(get_all_industry$Description, "left")
 
-
+#question <- 
 compared_gdp <- function(state_one,state_two, industry){
     state_gdp <- filter(gdp, GeoName == state_one |GeoName == state_two | GeoName == "United States*")
   
