@@ -1,6 +1,11 @@
 body {
-  background-color: #b3b3b3;
-  font-family: Arial,Arial,sans-serif;
+  background-color: #9B9B9B;
+
+}
+
+.container-fluid {
+  padding-right:0px;
+  padding-left:0;
 }
 
 img{
@@ -9,6 +14,12 @@ img{
 
 h2{
   color: white;
+  margin-top: 0;
+  padding: 1em 1em;
+  background-color: #258;
+  
+  font-size: 48px;
+  font: 'DyeLine';
 }
 
 
