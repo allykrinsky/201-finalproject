@@ -74,7 +74,9 @@ for_plot <- filter(for_plot, is.na(value) == FALSE)
 
 gdp_dow_plot <- function(year_1, year_2){
   
+
   for_plot <- for_plot %>% filter(year >= year_1 & year <= year_2)  
+
   
   gdp_dow <- ggplot(data = for_plot) +
     geom_line(mapping = aes(
@@ -82,14 +84,14 @@ gdp_dow_plot <- function(year_1, year_2){
       y = value,
       color = type,
       group = type
+
     ))  + ylab("Percent Change")  + scale_x_yearmon("%Y-%m") + labs(x = NULL)
+
   
   gdp_dow 
   
 }
 
 
-
-?scale_x_yearmon
 
 
