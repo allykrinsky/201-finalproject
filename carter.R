@@ -14,9 +14,9 @@ create_monthly_dow_graph <- function(years){
   
   ggplot(data = dow_monthly) +
     geom_line(mapping = aes(x = month_num, y = average_change, group = year, color = year)) +
-    labs(title = "DOW Closing vs Month", x = "Month", y = "GDP Value")+
+    labs(title = "DOW Average Change vs Month", x = "Month", y = "Average Change (%)")+
     scale_x_discrete(labels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"))
 }
 
 #I don't think is is correct. Is there a better way to do this?
-#cor(as.numeric(dow_monthly$month_num), as.numeric(dow_monthly$average_close), use = "everything")
+#cor(as.numeric(dow_monthly$month_num), as.numeric(dow_monthly$average_change), use = "everything")

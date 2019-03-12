@@ -15,8 +15,9 @@ region_list <- get_region_name$GeoName
 get_all_industry <- filter(gdp, GeoName == "Washington")
 industry_list <- trimws(get_all_industry$Description, "left")
 
-compared_gdp <- function(state, industry){
-    state_gdp <- filter(gdp, GeoName == state | GeoName == "United States*")
+#question <- 
+compared_gdp <- function(state_one,state_two, industry){
+    state_gdp <- filter(gdp, GeoName == state_one |GeoName == state_two | GeoName == "United States*")
   
   # remove the blank space in the begining
   remove_space <- trimws(state_gdp$Description, "left")
@@ -32,14 +33,14 @@ compared_gdp <- function(state, industry){
   
   p <- ggplot(data = gathered_industry) +
     
-    geom_line(mapping = aes(x= year, y = GDP, group = GeoName))+
-    geom_point(mapping = aes(x= year, y = GDP, group = GeoName))+
+    geom_line(mapping = aes(x= year, y = GDP, group = GeoName, color = GeoName))+
+    geom_point(mapping = aes(x= year, y = GDP, group = GeoName, color = GeoName))+
     theme(
       panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
       panel.background = element_blank(), axis.line = element_line(colour = "black")
     )+
     labs(
-      title = paste("The GDP in U.S. and", state, "from 2005 to 2018 \n in",industry),
+      title = paste("The GDP in United States,",state_one,"and",state_two, " \n from 2005 to 2018 \n in", industry),
       x = "year",
       y = "GDP"
     )
