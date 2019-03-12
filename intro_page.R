@@ -1,5 +1,16 @@
 
 # intro to report 
 
-intro <- "Our reports studies the U.S economy in the past years. There are two main data sets we used to do the analysis. One is the Dow Jones Industrial Average (DJIA) from 2014 to 2019, which measures the overall stock market performance in the U.S.. DJIA is a index measuring the stock performance of 30 companies which are the most valuable companies in the US and can largely influence the overall economy of the US. Another one is the GDP for United States from 2005 to 2018. We use the USA quarterly GDP to measure the US economy. GDP refers to gross domestic product, which measures the total value of goods and services produced in a given amount of time. In the GDP data table, we have GDP for each individual state for each quarter in all different industries including construction, mannufactuer and et. 
- Using these two data sets, we are going to have a better understanding of the US economy, and their interrelation. For more background knowledge on economics to help understand our report"
+intro <- "Our reports studies the U.S economy in the past years. There are two main data sets we used to do the analysis. 
+One is the Dow Jones Industrial Average (DJIA) from 2014 to 2019, which measures the overall stock market performance in the
+U.S.. DJIA is a index measuring the stock performance of 30 companies which are the most valuable companies in the US and can
+largely influence the overall economy of the US. Another one is the GDP for United States from 2005 to 2018. We use the USA 
+quarterly GDP to measure the US economy. GDP refers to gross domestic product, which measures the total value of goods and 
+services produced in a given amount of time. In the GDP data table, we have GDP for each individual state for each quarter 
+in all different industries including construction, mannufactuer and et. Using these two data sets, we are going to have a 
+better understanding of the US economy, and their interrelation. For more background knowledge on economics to help 
+understand our report"
+
+tab_1 <- "Under the GDP vs. Dow tab, you will find information answering the question, 'How does change in the Dow Jones Index 
+affect the change in US GDP?'. These two fields are measures of the US econmoy and from our preliminary analysis seem to 
+follow a similiar pattern. To learn more on the relationship between the Dow Jones Index and US GDP, click on the GDP vs. Dow tab."

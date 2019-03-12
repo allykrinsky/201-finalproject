@@ -7,13 +7,16 @@ source("carter.R")
 source("Ally.R")
 source("Claire.R")
 source("intro_page.R")
+
 my_ui <- fluidPage(theme = "bootstrap.css",
   titlePanel("GDP vs DOW Jones"),
   tabsetPanel(type = "tabs",
               tabPanel(
                 "Introduction",
                 h1("Background Infomation"),
-                p(intro)
+                p(intro),
+                h3("Page Descriptions"),
+                p(tab_1)
               ),
               tabPanel(
                 "GDP vs. Dow Jones",
