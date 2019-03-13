@@ -16,6 +16,10 @@ tab_1 <- "Under the GDP vs. Dow tab, you will find information answering the que
 affect the change in US GDP?'. These two fields are measures of the US economy and from our preliminary analysis seem to 
 follow a similiar pattern. To learn more on the relationship between the Dow Jones Index and US GDP, click on the GDP vs. Dow tab."
 
+tab_2 <- "The DOW Jones Seasonal tab investigates correlations between time of year and fluctuation of the DOW
+Jones Index. Any information about the future of the stock market based on seasonal changes would be extremely valuable.
+We will search for seasonal trends by comparing the last six years of DOW Jones data in an overlapped fashion that makes 
+repeated patterns very clear."
 
 tab_intro <- "Our report has three tabs: Dow Jones Seasonal, GDP VS. Dow Jones, and United States GDP. These three tabs will help three questions respectively."
 
