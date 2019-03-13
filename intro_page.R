@@ -10,6 +10,10 @@ gross domestic product, which measures the total value of goods and services pro
 we have GDP for each individual state for each quarter in all different industries including construction, manufacturer and et. 
 Using these two data sets, we are going to have a better understanding of the US economy, and their interrelation."
 
+tab_2 <- "The DOW Jones Seasonal tab investigates correlations between time of year and fluctuation of the DOW
+Jones Index. Any information about the future of the stock market based on seasonal changes would be extremely valuable.
+We will search for seasonal trends by comparing the last six years of DOW Jones data in an overlapped fashion that makes 
+repeated patterns very clear."
 
 tab_intro <- "Our report has three tabs: Dow Jones Seasonal, GDP VS. Dow Jones, and United States GDP. These three tabs will help three questions respectively."
 

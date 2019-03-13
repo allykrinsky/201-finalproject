@@ -23,13 +23,14 @@ my_ui <- fluidPage(
       h3("Page Descriptions"),
       p(tab_intro),
       p(tab_1),
+      p(tab_2),
       p(third_tab)
     ),
 
 
 
 
-    # Dow Jones tab: this tab shows an analysis on dow jones graohs
+    # Dow Jones tab: this tab shows an analysis on dow jones graphs
     tabPanel(
       "DOW Jones Seasonal",
       tags$h3("How does time of year affect the value of the DOW Jones?"),
