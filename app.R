@@ -11,6 +11,7 @@ source("intro_page.R")
 my_ui <- fluidPage(
   theme = "bootstrap.css",
   titlePanel("U.S. Economy Report"),
+
   tabsetPanel(
     type = "tabs",
     
@@ -24,6 +25,9 @@ my_ui <- fluidPage(
       p(tab_1),
       p(third_tab)
     ),
+
+
+
 
     # Dow Jones tab: this tab shows an analysis on dow jones graohs
     tabPanel(

@@ -43,7 +43,9 @@ compared_gdp <- function(state_one, state_two, industry) {
       title = paste("The GDP in United States,", state_one, "and", state_two, " \n from 2005 to 2018 \n in", industry),
       x = "year",
       y = "GDP"
+
     )
+
 
   ggplotly(p)
 }
