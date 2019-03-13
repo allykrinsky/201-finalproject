@@ -22,8 +22,8 @@ my_ui <- fluidPage(
       p(intro),
       h3("Page Descriptions"),
       p(tab_intro),
-      p(tab_1),
       p(tab_2),
+      p(tab_1),
       p(third_tab)
     ),
 
