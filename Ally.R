@@ -71,6 +71,7 @@ for_plot <- for_plot %>%
 
 for_plot <- filter(for_plot, is.na(value) == FALSE) 
 
+#this function takes in years from the slider and creates a table of the averages of the dow and gdp for those years
 gdp_dow_table <- function(year_1, year_2){
   
   for_table <- for_plot %>% 
@@ -83,7 +84,8 @@ gdp_dow_table <- function(year_1, year_2){
   
   for_table
 }
- 
+
+# this function takes in years from slider input and makes a line graph showing the percent change of dow and gdp overtime 
 gdp_dow_plot <- function(year_1, year_2){
   
 

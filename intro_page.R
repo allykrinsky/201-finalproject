@@ -4,7 +4,7 @@
 
 intro <- "Our report studies the U.S economy in the past years. There are two main data sets we used to do the analysis. 
 One is the Dow Jones Industrial Average (DJIA) from 2014 to 2019, which measures the overall stock market performance in the
-U.S. DJIA was accessed from ecoddata, and the data is updated daily from the stock market. U.S.. DJIA is a index measuring the stock performance of 30 companies which are the most valuable companies in the U.S. and can largely influence the overall economy of the U.S.. 
+U.S. DJIA was accessed from ecoddata, and the data is updated daily from the stock market. U.S. DJIA is a index measuring the stock performance of 30 companies which are the most valuable companies in the U.S. and can largely influence the overall economy of the U.S.. 
 Another one is the GDP for United States from 2005 to 2018. We use the USA quarterly GDP to measure the US economy. GDP refers to 
 gross domestic product, which measures the total value of goods and services produced in a given amount of time. In the GDP data table,
 we have GDP for each individual state for each quarter in all different industries including construction, manufacturer and et. 

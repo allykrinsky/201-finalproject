@@ -111,7 +111,8 @@ my_ui <- fluidPage(
     ), # tabPanel
     
     tabPanel(
-      "References"
+      "References",
+      uiOutput("links")
     )
   )
 )
@@ -143,6 +144,13 @@ my_server <- function(input, output) {
     make_text_gdp_dow
   })
   output$gdp_text <- renderText({gdp_text(input$region1, input$region2, input$industry)})
+  
+  output$links <- renderUI({
+    url <- HTML(paste(a("U.S. Department of Commerce", href="https://apps.bea.gov/itable/iTable.cfm?ReqID=70&step=1"), "<br/>", 
+                 a("Bureau of Economic Analysis", href="https://www.kaggle.com/solorzano/gdp-per-capita-in-us-states/home."), "<br/>",
+                 a("EOD Data", href ="http://eoddata.com/stockquote/INDEX/DJI.htm."), collapse = ""))
+    url
+  })
 }
 
 
